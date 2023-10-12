@@ -15,14 +15,32 @@
         .box {
             border: 1px solid black;
             padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .box:hover {
+            background-color: rgba(255, 255, 255, 0.8); /* Hover時には背景を少し薄くします */
         }
         h2 {
             border-bottom: 1px solid black;
             padding-bottom: 10px;
         }
-        ul {
+        ul, ol {
             list-style-type: none;
         }
+        /* それぞれのボックスに色を設定 */
+        .box:nth-child(1) {
+            background-color: #e8e5d8; /* Weatherの箱の色 */
+        }
+        .box:nth-child(2) {
+            background-color: #d8dce6; /* World Clocksの箱の色 */
+        }
+        .box:nth-child(3) {
+            background-color: #e4e8d8; /* Top Newsの箱の色 */
+        }
+        .box:nth-child(4) {
+            background-color: #e8d8d9; /* Music Hit Chartの箱の色 */
+        }
+        
     </style>
 </head>
 <body>
