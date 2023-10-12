@@ -1,0 +1,9 @@
+jobs:
+    some_job:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check out code
+      uses: actions/checkout@v2
+    - name: Use API Key
+      run: |
+        echo "API_KEY=${{ secrets.OPENWEATHER_API_KEY }}" >> $GITHUB_ENV

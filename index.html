@@ -51,10 +51,8 @@
 <body>
     <div class="box">
         <h2>Weather</h2>
-        <ul>
-            <li>Tokyo</li>
-            <li>Osaka</li>
-            <li>Fukuoka</li>
+        <ul class="weather-list">
+            <!-- JSで天気情報を追加 -->
         </ul>
     </div>
 
@@ -85,5 +83,26 @@
             <li>...</li>
         </ol>
     </div>
+    <script>
+    const apiKey = process.env.API_KEY;  // 1で取得したAPIキーを入力
+
+    const cities = ['Tokyo', 'Osaka', 'Fukuoka'];
+    cities.forEach(city => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+        .then(response => response.json())
+        .then(data => {
+            const weather = data.weather[0].description;
+            const temp = data.main.temp;
+
+            const li = document.createElement('li');
+            li.textContent = `${city}: ${weather}, ${temp}°C`;
+
+            document.querySelector('.weather-list').appendChild(li);
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+        });
+    });
+</script>
 </body>
 </html>
